@@ -38,8 +38,7 @@ def create(response):
         # clean name, create todo list
         if form.is_valid():
             n = form.cleaned_data['name']
-            t = ToDoList(name=n)
-            t.save()
+            response.user.todolist_set.create(name=n)
 
         # if form is post request,
         # redirect to newly created list
@@ -49,3 +48,6 @@ def create(response):
         form = CreateNewList()
     
     return render(response, 'main/create.html', {'form':form})
+
+def view(response):
+    return render(response, 'main/view.html')
