@@ -30,6 +30,7 @@ def home(response):
     return render(response, 'main/home.html', {})
 
 def create(response):
+    # response.user     # grants access to user properties (name, pass, is_authenticated, etc.)
     if response.method == "POST":       
         form = CreateNewList(response.POST)
 
